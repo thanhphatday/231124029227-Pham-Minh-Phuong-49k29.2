@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Xác suất bán theo Mặt hàng trong từng Nhóm theo Tháng</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin: 20px;
+      background: #fafafa;
+    }
+    h2.q10-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #2c3e50;
+      letter-spacing: 0.5px;
+    }
+    .q10-subtitle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+    /* Grid các mini charts */
+    #q10-charts {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+      gap: 18px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    #q10-tooltip {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      padding: 8px 10px;
+      border-radius: 8px;
+      pointer-events: none;
+      opacity: 0;
+      font-size: 13px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      z-index: 9999;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="./script-Q10.js"></script>
+</head>
+<body>
+  <h2 class="q10-title">📊 Xác suất bán theo <span style="color:#2563eb">Mặt hàng</span> trong từng <span style="color:#16a34a">Nhóm</span> theo Tháng</h2>
+  <div class="q10-subtitle">Công thức mỗi nhóm/tháng: (Đơn duy nhất của mặt hàng) / (Tổng đơn duy nhất của nhóm)</div>
+
+  <div id="q10-charts"></div>
+  <div id="q10-tooltip"></div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      renderQ10Charts({
+        csvUrl: "data_ggsheet-data.csv",
+        container: "#q10-charts",
+        // width: 450, height: 300, // có thể chỉnh nếu muốn mini chart to/nhỏ hơn
+      });
+    });
+  </script>
+</body>
+</html>

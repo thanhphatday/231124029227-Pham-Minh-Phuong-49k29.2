@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Dashboard | Doanh thu theo Mặt hàng</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin: 20px;
+      background: #fafafa;
+    }
+    h2.q1-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #2c3e50;
+      letter-spacing: 0.5px;
+    }
+    .q1-subtitle {
+      text-align: center;
+      color: #6b7280;      /* xám dịu */
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+    #q1-chart {
+      max-width: 1200px;
+      margin: 0 auto;      /* căn giữa chart */
+      overflow-x: auto;    /* thanh trượt ngang nếu cần */
+    }
+    /* Tooltip Q1 (phòng khi JS chưa set inline) */
+    #q1-tooltip {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      padding: 8px 10px;
+      border-radius: 8px;
+      pointer-events: none;
+      opacity: 0;
+      font-size: 13px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      z-index: 9999;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="./script-Q1.js"></script>
+</head>
+<body>
+  <h2 class="q1-title">📊 Doanh thu theo <span style="color:#2563eb">Mặt hàng</span></h2>
+  <div class="q1-subtitle">Nguồn dữ liệu: data_ggsheet-data.csv • Đơn vị: triệu VNĐ</div>
+
+  <div id="q1-chart"></div>
+  <div id="q1-tooltip"></div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      renderQ1Chart({
+        csvUrl: "data_ggsheet-data.csv",
+        container: "#q1-chart"
+      });
+    });
+  </script>
+</body>
+</html>

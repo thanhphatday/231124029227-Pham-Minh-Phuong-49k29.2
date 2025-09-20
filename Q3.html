@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Doanh số theo Tháng</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin: 20px;
+      background: #fafafa;
+    }
+    h2.q3-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #2c3e50;
+      letter-spacing: 0.5px;
+    }
+    .q3-subtitle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+    #q3-chart {
+      max-width: 1300px;
+      margin: 0 auto;      /* căn giữa chart */
+      overflow-x: auto;    /* thanh cuộn ngang nếu cần */
+    }
+    /* Tooltip (phòng khi JS chưa set inline) */
+    #q3-tooltip {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      padding: 8px 10px;
+      border-radius: 8px;
+      pointer-events: none;
+      opacity: 0;
+      font-size: 13px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      z-index: 9999;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="./script-Q3.js"></script>
+</head>
+<body class="q3-body">
+  <h2 class="q3-title">📅 Doanh số theo <span style="color:#2563eb">Tháng</span></h2>
+  <div class="q3-subtitle">Nguồn dữ liệu: data_ggsheet-data.csv • Đơn vị: triệu / tỷ VND</div>
+
+  <div id="q3-chart" class="q3-chart"></div>
+  <div id="q3-tooltip" class="q3-tooltip"></div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      renderQ3Chart({
+        csvUrl: "data_ggsheet-data.csv",
+        container: "#q3-chart"
+      });
+    });
+  </script>
+</body>
+</html>

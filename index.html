@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Visualization with D3.js</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    h1 { color: #4e79a7; }
+    ul { list-style-type: none; padding: 0; }
+    li { margin: 15px 0; display: inline-block; }
+    a { text-decoration: none; color: #4e79a7; font-size: 18px; padding: 8px 16px; border-radius: 4px; }
+    a:hover, a.active { background: #e0e7ef; }
+    #chart-frame { width: 90vw; height: 70vh; border: 1px solid #ccc; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <h1>Data Visualization with D3.js</h1>
+  <ul id="menu">
+    <li><a href="#" data-src="Q1.html" class="active">Chart Q1</a></li>
+    <li><a href="#" data-src="Q2.html">Chart Q2</a></li>
+    <li><a href="#" data-src="Q3.html">Chart Q3</a></li>
+    <li><a href="#" data-src="Q4.html">Chart Q4</a></li>
+    <li><a href="#" data-src="Q5.html">Chart Q5</a></li>
+    <li><a href="#" data-src="Q6.html">Chart Q6</a></li>
+    <li><a href="#" data-src="Q7.html">Chart Q7</a></li>
+    <li><a href="#" data-src="Q8.html">Chart Q8</a></li>
+    <li><a href="#" data-src="Q9.html">Chart Q9</a></li>
+    <li><a href="#" data-src="Q10.html">Chart Q10</a></li>
+    <li><a href="#" data-src="Q11.html">Chart Q11</a></li>
+    <li><a href="#" data-src="Q12.html">Chart Q12</a></li>
+  </ul>
+  <iframe id="chart-frame" src="Q1.html"></iframe>
+  <script>
+    const menu = document.getElementById('menu');
+    const links = menu.querySelectorAll('a');
+    const frame = document.getElementById('chart-frame');
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        links.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        frame.src = this.getAttribute('data-src');
+      });
+    });
+  </script>
+</body>
+</html>
